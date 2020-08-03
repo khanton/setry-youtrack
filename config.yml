@@ -1,0 +1,8 @@
+sentry:
+  host: http://84.201.154.64:8080
+  token: 7f4dd3e7438d415296271567e0f592a181c58d1462db43b2980edf0698074561
+  project: nuxt-aug-03
+youtrack:
+  host: http://84.201.154.64
+  token: perm:YWRtaW4=.NDctMA==.FiKTTbT1cSW5qym7oKYcmv9tn4fJfq
+  project: 0-0
