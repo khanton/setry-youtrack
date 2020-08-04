@@ -34,7 +34,7 @@ function createNewIssues(issues) {
         id: config.youtrack.project
       }
     }).then(data => {
-      console.info(`Created issue with id: %{data.data.id}`)
+      console.info(`Created issue with id: ${data.data.id}`)
     })
       .catch((err) => {
         console.error(`Issue create error: ${err.message}`)
