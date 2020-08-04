@@ -1,6 +1,6 @@
 sentry:
-  host: http://84.201.154.64:8080
-  token: 7f4dd3e7438d415296271567e0f592a181c58d1462db43b2980edf0698074561
+  host: http://164.90.238.41:9000
+  token: ce9c3c8c54634425ac7404cd8e849666b445138bbf9f47378486f81feaae0f0c
   project: nuxt-aug-03
 youtrack:
   host: http://84.201.154.64

@@ -38,7 +38,7 @@ function createNewIssues(issues) {
     })
       .catch((err) => {
         console.error(`Issue create error: ${err.message}`)
-        if (err.response.data) {
+        if (err.response && err.response.data) {
           console.error(JSON.stringify(err.response.data, null, " "))
         }
       })
@@ -62,17 +62,24 @@ function youtrackProcess(setryIssues) {
 
   }).catch((err) => {
     console.error(`YouTrack error: ${err.message}`);
+    if (err.response && err.response.data) {
+      console.error(JSON.stringify(err.response.data, null, " "))
+    }
   })
 }
 
-sentry.get(`/api/0/projects/sentry/${config.sentry.project}/issues/`, {
-  params: {
-    query: "is:unresolved",
-    limit: 20
-  }
-}).then((res) => {
-  return youtrackProcess(_.map(res.data, (item) => { return { title: item.title, link: item.permalink } }));
-}).catch((err) => {
-  console.error(`Sentry error: ${err.message}`);
-})
-
+exports.handler = function (event, context) {
+  return sentry.get(`/api/0/projects/sentry/${config.sentry.project}/issues/`, {
+    params: {
+      query: "is:unresolved",
+      limit: 20
+    }
+  }).then((res) => {
+    return youtrackProcess(_.map(res.data, (item) => { return { title: item.title, link: item.permalink } }));
+  }).catch((err) => {
+    console.error(`Sentry error: ${err.message}`);
+    if (err.response && err.response.data) {
+      console.error(JSON.stringify(err.response.data, null, " "))
+    }
+  })
+}
